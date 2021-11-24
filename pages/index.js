@@ -7,6 +7,7 @@ import Blogs from '../components/Blogs'
 import JoinUs from '../components/JoinUs'
 import Socials from '../components/Socials'
 import Footer from '../components/Footer'
+import Nav from '../components/nav'
 
 export default function Home() {
   return (
@@ -17,14 +18,16 @@ export default function Home() {
       </Head>
 
       <main className="">
-        <Welcome/>
-        <HowItWorks/>
-        <WhitePaper/>
-        <Stats/>
-        <Blogs/>
-        <JoinUs/>
-        <Socials/>
-        <Footer/>
+        <Nav>
+          <Welcome/>
+          <HowItWorks/>
+          <WhitePaper/>
+          <Stats/>
+          <Blogs/>
+          <JoinUs/>
+          <Socials/>
+          <Footer/>
+        </Nav>
       </main>
     </div>
   )
