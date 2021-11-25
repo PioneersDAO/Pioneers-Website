@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import Nav from '../components/nav'
+import WhitePaper from '../sections/WhitePaper'
 
 export default function Home() {
   return (
@@ -11,9 +12,8 @@ export default function Home() {
       </Head>
 
       <main className="">
-        <Nav>
-          <h2>test</h2>
-        </Nav>
+        <WhitePaper/>
+
       </main>
     </div>
   )
