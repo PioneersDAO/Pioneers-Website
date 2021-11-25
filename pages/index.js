@@ -11,9 +11,7 @@ export default function Home() {
       </Head>
 
       <main className="">
-        <Nav>
-          <h2>test</h2>
-        </Nav>
+
       </main>
     </div>
   )
