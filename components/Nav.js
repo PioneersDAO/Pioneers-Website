@@ -7,13 +7,11 @@ export default function Nav(){
 
     const {data, error, isLoading} = useMoralisQuery('PolygonTokenBalance')
     
-    const { authenticate, isAuthenticated, setUserData, user} = useMoralis()
+    const { authenticate, isAuthenticated, isAuthenticating, logout, setUserData, user} = useMoralis()
 
     useEffect(()=>{
         if(user){
             const filteredData = data.filter(data => data.get('address') == user.get('accounts')[0])
-            console.log(filteredData)
-            console.log("account", user.get('accounts') )
         }
      
     }, user)
@@ -23,7 +21,7 @@ export default function Nav(){
         authenticate({
             signingMessage: "You are signing to PioneersDAO! Your journey starts here!",
             onError: ()=> alert("Signature refused"),
-            onComplete: ()=> { console.log(user) }
+            onComplete: ()=> { checkFirstSignup() }
         })
         
 
@@ -31,7 +29,7 @@ export default function Nav(){
 
     function checkFirstSignup(){
        console.log(user)
-     
+        
     }
     
     return(
@@ -47,7 +45,11 @@ export default function Nav(){
                     <Link  href="/nft-redeem"><a className="block text-white mr-16">Docs</a></Link>
                 </div>
                 <div className="px-16 py-2 bg-purple-light text-white rounded-sm">
-                    <a onClick={auth}href="#">Connect</a>
+                    { user ?
+                        
+                        <a onClick={() => logout()}href="#">logout</a>:
+                        <a onClick={auth}href="#">Connect</a>
+                    }
                 </div>
             </div>
         </div>
