@@ -2,19 +2,17 @@ import Head from 'next/head'
 
 import Nav from '../components/nav'
 
+import Whitepaper from "../sections/whitepaper";
+
 export default function Home() {
   return (
     <div className="">
       <Head>
-        <title>Create Next App</title>
+        <title>Pioneers DAO</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className="">
-        <Nav>
-          <h2>test</h2>
-        </Nav>
-      </main>
+      
+      <Whitepaper />
     </div>
   )
 }
