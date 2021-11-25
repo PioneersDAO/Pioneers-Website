@@ -1,17 +1,29 @@
 import Link from "next/link"
-import { useMoralis } from 'react-moralis'
+import { useMoralis, useMoralisQuery } from 'react-moralis'
 import router, { useRouter } from "next/router"
+import { useEffect } from "react"
 
 export default function Nav(){
 
-
+    const {data, error, isLoading} = useMoralisQuery('PolygonTokenBalance')
+    
     const { authenticate, isAuthenticated, setUserData, user} = useMoralis()
+
+    useEffect(()=>{
+        if(user){
+            const filteredData = data.filter(data => data.get('address') == user.get('accounts')[0])
+            console.log(filteredData)
+            console.log("account", user.get('accounts') )
+        }
+     
+    }, user)
+
     function auth(){
 
         authenticate({
             signingMessage: "You are signing to PioneersDAO! Your journey starts here!",
             onError: ()=> alert("Signature refused"),
-            onComplete: ()=> { if(!user.hasOnboarded) router.push('/whitepaper') }
+            onComplete: ()=> { console.log(user) }
         })
         
 
