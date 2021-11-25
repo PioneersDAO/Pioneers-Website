@@ -1,17 +1,27 @@
 import Link from "next/link"
-import { useMoralis } from 'react-moralis'
+import { useMoralis, useMoralisQuery } from 'react-moralis'
 import router, { useRouter } from "next/router"
+import { useEffect } from "react"
 
 export default function Nav(){
 
+    const {data, error, isLoading} = useMoralisQuery('PolygonTokenBalance')
+    
+    const { authenticate, isAuthenticated, isAuthenticating, logout, setUserData, user} = useMoralis()
 
-    const { authenticate, isAuthenticated, setUserData, user} = useMoralis()
+    useEffect(()=>{
+        if(user){
+            const filteredData = data.filter(data => data.get('address') == user.get('accounts')[0])
+        }
+     
+    }, user)
+
     function auth(){
 
         authenticate({
             signingMessage: "You are signing to PioneersDAO! Your journey starts here!",
             onError: ()=> alert("Signature refused"),
-            onComplete: ()=> { if(!user.hasOnboarded) router.push('/whitepaper') }
+            onComplete: ()=> { checkFirstSignup() }
         })
         
 
@@ -19,7 +29,7 @@ export default function Nav(){
 
     function checkFirstSignup(){
        console.log(user)
-     
+        
     }
     
     return(
@@ -35,7 +45,11 @@ export default function Nav(){
                     <Link  href="/nft-redeem"><a className="block text-white mr-16">Docs</a></Link>
                 </div>
                 <div className="px-16 py-2 bg-purple-light text-white rounded-sm">
-                    <a onClick={auth}href="#">Connect</a>
+                    { user ?
+                        
+                        <a onClick={() => logout()}href="#">logout</a>:
+                        <a onClick={auth}href="#">Connect</a>
+                    }
                 </div>
             </div>
         </div>
