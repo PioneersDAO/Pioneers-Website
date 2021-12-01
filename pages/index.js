@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Nav from '../components/nav'
 import HeroHeader from '../sections/HeroHeader'
+import Stats from '../sections/Stats'
 import WhitePaper from '../sections/WhitePaper'
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Nav/>
         <HeroHeader/>
         <WhitePaper/>
+        <Stats/>
         
 
       </main>
