@@ -7,3 +7,23 @@
     @apply bg-purple-dark;
   }
 }
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+.col-4 {
+  width: 33.33%;
+}
+.col-6 {
+  width: 50%;
+}
+/*
+
+.footer {
+  padding: 20px 0;
+  color: white;
+}
+.footer-contents {
+  display: flex;
+} */

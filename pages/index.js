@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "../components/Header";
 import BlogCard from "../components/BlogCard";
 import Nav from "../components/nav";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -34,6 +35,8 @@ export default function Home() {
           image="https://images.unsplash.com/photo-1605792657660-596af9009e82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1102&q=80"
         />
       </div>
+
+      <Footer />
     </div>
   );
 }
